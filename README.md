@@ -5,7 +5,7 @@
 在新系统上执行：
 
 ```bash
-wget -O init.sh https://gitee.com/mimrc/summer-install/raw/itjun-debian/debian/init.sh
+wget -O init.sh https://raw.githubusercontent.com/itjun/itjun-tools/main/debian/init.sh
 chmod +x init.sh
 sudo ./init.sh
 ```
@@ -25,7 +25,7 @@ sudo ./init.sh
 
 ```bash
 # 1. 下载 sources.list 并覆盖
-wget -O /etc/apt/sources.list https://gitee.com/mimrc/summer-install/raw/itjun-debian/debian/sources.list
+wget -O /etc/apt/sources.list https://raw.githubusercontent.com/itjun/itjun-tools/main/debian/sources.list
 
 # 2. 更新并升级
 apt update && apt upgrade -y
