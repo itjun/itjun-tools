@@ -49,4 +49,4 @@ systemctl enable ssh
 ## 源文件
 
 - `debian/init.sh` - 初始化脚本
-- `debian/sources.list` - Debian 镜像源配置（南京大学镜像，Debian 13 Trixie）
+- `debian/sources.list` - Debian 镜像源配置（中科大镜像，Debian 13 Trixie）
