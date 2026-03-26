@@ -1,11 +1,21 @@
 # Debian Minimal Setup
 
+支持 GitHub / Gitee 双平台同步
+
 ## 一键初始化（推荐）
 
 在新系统上执行：
 
+### GitHub
 ```bash
 wget -O init.sh https://raw.githubusercontent.com/itjun/itjun-tools/main/debian/init.sh
+chmod +x init.sh
+sudo ./init.sh
+```
+
+### Gitee
+```bash
+wget -O init.sh https://gitee.com/shenzhenitjun/itjun-tools/raw/main/debian/init.sh
 chmod +x init.sh
 sudo ./init.sh
 ```
@@ -23,9 +33,32 @@ sudo ./init.sh
 
 如果需要手动分步执行：
 
+### GitHub
 ```bash
 # 1. 下载 sources.list 并覆盖
 wget -O /etc/apt/sources.list https://raw.githubusercontent.com/itjun/itjun-tools/main/debian/sources.list
+
+# 2. 更新并升级
+apt update && apt upgrade -y
+
+# 3. 安装基础软件
+apt install -y \
+    openssh-server \
+    vim \
+    curl \
+    wget \
+    sudo \
+    tree \
+    ca-certificates
+
+# 4. 启用 SSH
+systemctl enable ssh
+```
+
+### Gitee
+```bash
+# 1. 下载 sources.list 并覆盖
+wget -O /etc/apt/sources.list https://gitee.com/shenzhenitjun/itjun-tools/raw/main/debian/sources.list
 
 # 2. 更新并升级
 apt update && apt upgrade -y
