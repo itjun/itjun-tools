@@ -6,7 +6,7 @@ GITHUB_URL="https://raw.githubusercontent.com/itjun/itjun-tools/main/debian/sour
 GITEE_URL="https://gitee.com/shenzhenitjun/itjun-tools/raw/main/debian/sources.list"
 
 echo "[INFO] Downloading sources.list..."
-if wget -q -O /etc/apt/sources.list "$GITHUB_URL"; then
+if wget -q --timeout=10 -O /etc/apt/sources.list "$GITHUB_URL"; then
     echo "[INFO] Downloaded from GitHub"
 else
     echo "[WARN] GitHub download failed, trying Gitee..."
