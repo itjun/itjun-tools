@@ -2,13 +2,21 @@
 set -e
 
 # 从远程仓库拉取 sources.list 并强制覆盖
-SOURCES_LIST_URL="https://raw.githubusercontent.com/itjun/itjun-tools/main/debian/sources.list"
+GITHUB_URL="https://raw.githubusercontent.com/itjun/itjun-tools/main/debian/sources.list"
+GITEE_URL="https://gitee.com/shenzhenitjun/itjun-tools/raw/main/debian/sources.list"
 
 echo "[INFO] Downloading sources.list..."
-wget -q -O /etc/apt/sources.list "$SOURCES_LIST_URL" || {
-    echo "[ERROR] Failed to download sources.list"
-    exit 1
-}
+if wget -q -O /etc/apt/sources.list "$GITHUB_URL"; then
+    echo "[INFO] Downloaded from GitHub"
+else
+    echo "[WARN] GitHub download failed, trying Gitee..."
+    if wget -q -O /etc/apt/sources.list "$GITEE_URL"; then
+        echo "[INFO] Downloaded from Gitee"
+    else
+        echo "[ERROR] Failed to download sources.list from both GitHub and Gitee"
+        exit 1
+    fi
+fi
 
 echo "[INFO] Updating package lists..."
 apt update -y
